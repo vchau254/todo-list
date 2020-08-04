@@ -34,6 +34,7 @@ export default class TodoList extends React.Component {
               key={todo.id}
               toggleDone={() => this.toggleDone(todo.id)}
               text={todo.text}
+              class={todo.isDone}
             />
           );
         })}
