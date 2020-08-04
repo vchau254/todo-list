@@ -1,6 +1,6 @@
-import React from 'react';
-import TodoForm from './TodoForm';
-import TodoItem from './TodoItem';
+import React from "react";
+import TodoForm from "./TodoForm";
+import TodoItem from "./TodoItem";
 
 export default class TodoList extends React.Component {
   state = {
@@ -8,16 +8,17 @@ export default class TodoList extends React.Component {
   };
 
   addTodo = (todo) => {
-    const newTodo = [...this.state.todoList];
-    newTodo.push(todo);
+    const { todoList } = this.state;
+    const newTodo = [...todoList, todo];
     this.setState({ todoList: newTodo });
   };
 
   toggleDone = (id) => {
-    this.setState((state) => ({
-      todoList: state.todoList.map((todo) => {
+    this.setState(({todoList}) => ({
+      todoList: todoList.map((todo) => {
         if (todo.id === id) {
-          return { ...todo, isDone: !todo.isDone }; //update isDone only
+          console.log("here");
+          return {...todo, isDone: !todo.isDone}; //update isDone only
         } else {
           return todo;
         }
@@ -25,19 +26,13 @@ export default class TodoList extends React.Component {
     }));
   };
   render() {
+    const { todoList } = this.state;
     return (
       <div>
         <TodoForm onSubmit={this.addTodo} />
-        {this.state.todoList.map((todo) => {
-          return (
-            <TodoItem
-              key={todo.id}
-              toggleDone={() => this.toggleDone(todo.id)}
-              text={todo.text}
-              class={todo.isDone}
-            />
-          );
-        })}
+        {todoList.map((todo) => (
+          <TodoItem key={todo.id} toggleDone={this.toggleDone} todo={todo} />
+        ))}
       </div>
     );
   }

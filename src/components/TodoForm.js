@@ -1,26 +1,27 @@
-import React from 'react';
+import React from "react";
 
 export default class TodoForm extends React.Component {
   state = {
-    text: '',
+    text: "",
   };
 
-  handleChange = (event) => {
+  handleChange = (e) => {
     this.setState({
-      [event.target.name]: event.target.value,
+      text: e.target.value,
     });
-    console.log(event.target.value);
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    this.props.onSubmit({
-      text: this.state.text,
+    const {onSubmit} = this.props;
+    const {text} = this.state;
+    onSubmit({
+      text,
       isDone: false,
       id: Math.random(),
     });
     //clear the input
     this.setState({
-      text: '',
+      text: "",
     });
   };
   render() {
@@ -31,8 +32,8 @@ export default class TodoForm extends React.Component {
           value={this.state.text}
           placeholder="todo..."
           onChange={this.handleChange}
-        ></input>
-        <button onClick={this.handleSubmit}>Add</button>
+        />
+        <button>Add</button>
       </form>
     );
   }

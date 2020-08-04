@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 
-export default (props) => (
-  <div
-    className={props.isDone ? 'checked' : 'unchecked'}
-    onClick={props.toggleDone}
-  >
-    {props.text}
-  </div>
-);
+export default ({ todo, toggleDone }) => {
+  return (
+    <div
+      className={todo.isDone ? "checked" : "unchecked"}
+      onClick={() => toggleDone(todo.id)}
+    >
+      {todo.text}
+    </div>
+  );
+};
