@@ -1,3 +1,81 @@
 .App {
   text-align: center;
+  margin: auto;
+}
+
+.todoList {
+  margin: 32px 256px;
+  border: lightblue solid 2px;
+  border-radius: 15px;
+}
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+}
+.form {
+  margin: 8px auto;
+  display: flex;
+  justify-content: center;
+}
+button {
+  margin-left: 4px;
+  border-radius: 5px;
+  box-shadow: none;
+  padding: 4px 8px;
+  border: none;
+}
+input:focus,
+button:focus {
+  outline: none;
+}
+input,
+.addBtn {
+  padding: 8px;
+  text-align: center;
+  font-size: 16px;
+  width: 85%;
+  margin: 8px 0;
+  border: #33c7fe solid 1px;
+  border-radius: 8px;
+}
+.addBtn {
+  flex-basis: 8%;
+  margin-left: 8px;
+  background-color: #33c7fe;
+}
+.select {
+  display: flex;
+  justify-content: flex-end;
+}
+label {
+  margin-right: 8px;
+}
+.todo {
+  margin: 4px 8px;
+  display: flex;
+  justify-content: stretch;
+}
+.todo:nth-child(odd) {
+  background: #ccf1ff;
+}
+.todo:nth-child(even) {
+  background: #82dcff;
+}
+.text {
+  flex-basis: 60%;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 8px;
+}
+.checked {
+  text-decoration: line-through;
+}
+.uncheck {
+  text-decoration: none;
+}
+.todoDate {
+  border: none;
+  flex-basis: 16%;
+  text-align: center;
+  margin-left: 16px;
+  display: inline;
 }

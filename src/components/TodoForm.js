@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 export default class TodoForm extends React.Component {
   state = {
-    text: "",
+    text: '',
   };
 
   handleChange = (e) => {
@@ -12,28 +12,34 @@ export default class TodoForm extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
-    const {onSubmit} = this.props;
-    const {text} = this.state;
-    onSubmit({
-      text,
-      isDone: false,
-      id: Math.random(),
-    });
+    const { onSubmit } = this.props;
+    const { text } = this.state;
+    if (text !== '') {
+      onSubmit({
+        text,
+        isDone: false,
+        id: Math.random(),
+        date: new Date(Date.now()),
+        priority: [0, 1, 2, 3], ///
+      });
+    } else {
+      return;
+    }
     //clear the input
     this.setState({
-      text: "",
+      text: '',
     });
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <input
           name="text"
           value={this.state.text}
           placeholder="todo..."
           onChange={this.handleChange}
         />
-        <button>Add</button>
+        <button className="addBtn">Add</button>
       </form>
     );
   }
