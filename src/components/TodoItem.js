@@ -3,7 +3,7 @@ import React from 'react';
 export default ({ todo, toggleDone, handleDelete, handlePriority }) => {
   return (
     <div className="todo">
-      <select className="priority" onChange={handlePriority}>
+      <select className="priority" onChange={(e) => handlePriority(e, todo.id)}>
         <option value="3">Normal</option>
         <option value="0">Urgent</option>
         <option value="1">Critical</option>
