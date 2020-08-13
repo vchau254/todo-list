@@ -21,7 +21,7 @@ export default class TodoForm extends React.Component {
         isDone: false,
         id: Math.random(),
         date: new Date(Date.now()),
-        priority: priority, //pass priority value from parent
+        priority: '3',
       });
     } else {
       return;
