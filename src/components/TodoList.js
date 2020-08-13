@@ -11,6 +11,7 @@ export default class TodoList extends React.Component {
   state = {
     todoList: [],
     value: 'all',
+    priority: '3',
   };
 
   addTodo = (todo) => {
@@ -29,6 +30,12 @@ export default class TodoList extends React.Component {
         }
       }),
     }));
+  };
+
+  // handle priority change
+  handlePriority = (e) => {
+    this.setState({ priority: e.target.value });
+    console.log('here', this.state.priority, e.target.value);
   };
 
   handleDelete = (id) => {
@@ -70,7 +77,7 @@ export default class TodoList extends React.Component {
     return (
       <div className="todoList">
         <h1> TODO LIST</h1>
-        <TodoForm onSubmit={this.addTodo} />
+        <TodoForm onSubmit={this.addTodo} priority={this.state.priority} />
         <div className="select">
           <label>Sort by</label>
           <select value="this.state.value" onChange={this.handleChange}>
@@ -85,6 +92,7 @@ export default class TodoList extends React.Component {
 
         {todoList.map((todo) => (
           <TodoItem
+            handlePriority={this.handlePriority}
             key={todo.id}
             toggleDone={this.toggleDone}
             todo={todo}

@@ -14,13 +14,14 @@ export default class TodoForm extends React.Component {
     event.preventDefault();
     const { onSubmit } = this.props;
     const { text } = this.state;
+    const { priority } = this.props;
     if (text !== '') {
       onSubmit({
         text,
         isDone: false,
         id: Math.random(),
         date: new Date(Date.now()),
-        priority: [0, 1, 2, 3], ///
+        priority: priority, //pass priority value from parent
       });
     } else {
       return;

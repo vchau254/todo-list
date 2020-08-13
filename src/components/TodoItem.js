@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default ({ todo, toggleDone, handleDelete }) => {
+export default ({ todo, toggleDone, handleDelete, handlePriority }) => {
   return (
     <div className="todo">
-      <select className="priority">
+      <select className="priority" onChange={(event) => handlePriority(event)}>
         <option value="3">Normal</option>
         <option value="0">Urgent</option>
         <option value="1">Critical</option>
