@@ -14,7 +14,6 @@ export default class TodoForm extends React.Component {
     event.preventDefault();
     const { onSubmit } = this.props;
     const { text } = this.state;
-    const { priority } = this.props;
     if (text !== '') {
       onSubmit({
         text,

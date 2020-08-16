@@ -53,6 +53,7 @@ label {
   margin: 4px 8px;
   display: flex;
   justify-content: stretch;
+  border-radius: 10px;
 }
 .todo:nth-child(odd) {
   background: #ccf1ff;
@@ -73,9 +74,14 @@ label {
   text-decoration: none;
 }
 .todoDate {
-  border: none;
+  padding: 8px 4px;
   flex-basis: 16%;
   text-align: center;
   margin-left: 16px;
   display: inline;
+}
+
+.priority {
+  border-radius: 5px 0 0 5px;
+  border: none;
 }

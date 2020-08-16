@@ -31,35 +31,16 @@ export default class TodoList extends React.Component {
     }));
   };
 
-  // handle priority change
-  // i think i should have two function, one to update value of option. second is to assign this value to priority based on id
-  // im not sure how to merge these functions into my code.
-  // handlePriority = (e) => {
-  //   this.setState({ priority: e.target.value });
-  // };
-
-  // togglePriority = (id) => {
-  //   this.setState(({ todoList }) => ({
-  //     todoList: todoList.map((todo) => {
-  //       if (todo.id === id) {
-  //         return { ...todo, priority: this.state.priority };
-  //       } else {
-  //         return todo;
-  //       }
-  //     }),
-  //   }));
-  // };
-
-  handlePriority = (id) => {
-    this.setState(({ todoList }) => ({
-      todoList: todoList.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, priority: e.target.value };
-        } else {
-          return todo;
-        }
-      }),
-    }));
+  handlePriority = (e, id) => {
+    const { todoList } = this.state;
+    const item = todoList.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, priority: e.target.value };
+      } else {
+        return todo;
+      }
+    });
+    this.setState({ todoList: item });
   };
 
   handleDelete = (id) => {
@@ -90,6 +71,12 @@ export default class TodoList extends React.Component {
         let dateA = a.date;
         let dateB = b.date;
         return dateA - dateB;
+      });
+    } else if (value === 'priority') {
+      todoList.sort(function (a, b) {
+        let priorityA = a.priority;
+        let priorityB = b.priority;
+        return priorityA - priorityB;
       });
     } else {
       //Move completed task in the end of list

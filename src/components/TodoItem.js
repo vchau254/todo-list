@@ -3,11 +3,11 @@ import React from 'react';
 export default ({ todo, toggleDone, handleDelete, handlePriority }) => {
   return (
     <div className="todo">
-      <select className="priority" onChange={handlePriority}>
-        <option value="3">Normal</option>
-        <option value="0">Urgent</option>
-        <option value="1">Critical</option>
-        <option value="2">If You Can</option>
+      <select className="priority" onChange={(e) => handlePriority(e, todo.id)}>
+        <option value="4">Normal</option>
+        <option value="1">Urgent</option>
+        <option value="2">Critical</option>
+        <option value="3">If You Can</option>
       </select>
 
       <div className={`text ${todo.isDone ? 'checked' : 'unchecked'} `}>
